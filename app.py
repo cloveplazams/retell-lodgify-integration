@@ -1,5 +1,5 @@
 from flask import Flask
-from config importPORT
+from config import PORT
 from database import init_db
 from routes_api import api_bp
 from routes_ui import ui_bp
