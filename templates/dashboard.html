@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <h2>Your Properties</h2>
+    <a href="/add" class="btn">Add New Property</a>
+</div>
+
+{% if properties %}
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Lodgify ID</th>
+            <th>Max Capacity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for prop in properties %}
+        <tr>
+            <td>{{ prop.name }}</td>
+            <td>{{ prop.lodgify_id }}</td>
+            <td>{{ prop.capacity }}</td>
+            <td>
+                <a href="/delete/{{ prop.id }}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No properties found. Add one to get started!</p>
+{% endif %}
+{% endblock %}
